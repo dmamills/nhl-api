@@ -13,11 +13,11 @@ const BASE_URL = 'https://statsapi.web.nhl.com/api/v1/';
 const getRequest = (url) => {
     return new Promise((resolve, reject) => {
         request(url, (error, response, body) => {
-			try {
+            try {
                 resolve(JSON.parse(body));
-			} catch(e) {
+            } catch(e) {
                 reject(e);
-			}
+            }
         });
     });
 }
@@ -53,12 +53,12 @@ const getResource = resource => {
         return res;
     };
 
-	/**
-	* Return GET request function
-	* @param String|Object
-	* @param Object
-	* @return Promise<Object>
-	*/
+    /**
+    * Return GET request function
+    * @param String|Object
+    * @param Object
+    * @return Promise<Object>
+    */
     return (id, options = {}) => {
 
         let baseUrl = url;
@@ -67,24 +67,24 @@ const getResource = resource => {
             baseUrl = baseUrl + '/' + id;
         }
 
-		if(typeof id === 'object') {
-			options = id;
-		}
+        if(typeof id === 'object') {
+            options = id;
+        }
 
-		if(options && typeof options === 'object') {
-			if(options.expand && Array.isArray(options.expand)) {
-				options.expand = options.expand.join(',');
-			}
+        if(options && typeof options === 'object') {
+            if(options.expand && Array.isArray(options.expand)) {
+                options.expand = options.expand.join(',');
+            }
 
-			baseUrl = baseUrl + '?' + querystring.stringify(options);
-		}
+            baseUrl = baseUrl + '?' + querystring.stringify(options);
+        }
 
         return getRequest(baseUrl).then(parseResource);
     }
 }
 
 module.exports = {
-	getResource,
-	getResourceUrl,
+    getResource,
+    getResourceUrl,
     get: getRequest
 };

@@ -7,40 +7,40 @@ const nhlApi = require('../');
 describe('request utilities', function() {
 
     it('should properly create resource url', () => {
-		requests.getResourceUrl('teams').should.equal('https://statsapi.web.nhl.com/api/v1/teams');
+        requests.getResourceUrl('teams').should.equal('https://statsapi.web.nhl.com/api/v1/teams');
     });
 
-	it('should create resource request functions', () => {
-		let getTeamFn = requests.getResource('teams');
-		let teamPromise = getTeamFn();
-		getTeamFn.should.be.a.Function();
-		teamPromise.should.be.a.Promise();
-	});
+    it('should create resource request functions', () => {
+        let getTeamFn = requests.getResource('teams');
+        let teamPromise = getTeamFn();
+        getTeamFn.should.be.a.Function();
+        teamPromise.should.be.a.Promise();
+    });
 
-	it('should fetch a single resource when passed an id', (cb) => {
-		requests.getResource('teams')(10).then(team => {
+    it('should fetch a single resource when passed an id', (cb) => {
+        requests.getResource('teams')(10).then(team => {
             team.should.be.Object();
-			team.name.should.equal('Toronto Maple Leafs');
-			cb();
-		});
-	});
+            team.name.should.equal('Toronto Maple Leafs');
+            cb();
+        });
+    });
 
-	it('should fetch all teams when not passed an id', cb => {
-		requests.getResource('teams')().then(teams => {
+    it('should fetch all teams when not passed an id', cb => {
+        requests.getResource('teams')().then(teams => {
             teams.should.be.Array();
-			teams.should.have.length(30);
-			cb();
-		});
-	});
+            teams.should.have.length(30);
+            cb();
+        });
+    });
 
-	it('should allow expand parameters', cb => {
-		requests.getResource('teams')(10, {
-			expand: ['team.roster','roster.person','person.stats']
-		}).then(team => {
-			team.should.have.ownProperty('roster');
-			cb();
-		});
-	});
+    it('should allow expand parameters', cb => {
+        requests.getResource('teams')(10, {
+            expand: ['team.roster','roster.person','person.stats']
+        }).then(team => {
+            team.should.have.ownProperty('roster');
+            cb();
+        });
+    });
 });
 
 describe('team api', () => {
