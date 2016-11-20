@@ -1,10 +1,12 @@
 # nhl-api
 
+[![Build Status](https://secure.travis-ci.org/dmamills/nhl-api.png)](http://travis-ci.org/dmamills/nhl-api)
+
 poorly made promise based node library for getting nhl stats. basically a wrapper around the ajax requests nhl.com makes.
 
 ## usage
 
-```
+```javascript
 const nhlApi = require('nhl-api');
 
 nhlApi.team(10).then(team => {
@@ -23,7 +25,7 @@ nhlApi.schedule({
 
 Expand is an option that fills out properties on the response. They can be passed as options as either an array, or a comma seperated string.
 
-```
+```javascript
 let teamPromise = nhlApi.team(10, {
     expand: [
         'team.roster',
