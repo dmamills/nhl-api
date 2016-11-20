@@ -1,0 +1,17 @@
+{
+  "name": "nhl-api",
+  "version": "1.0.0",
+  "description": "get nhl stats, for fun!",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha --timeout 15000 tests/test.js"
+  },
+  "author": "dmamills",
+  "dependencies": {
+    "request": "^2.79.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.1.2",
+    "should": "^11.1.1"
+  }
+}
