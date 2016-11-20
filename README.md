@@ -26,7 +26,7 @@ nhlApi.schedule({
 Expand is an option that fills out properties on the response. They can be passed as options as either an array, or a comma seperated string.
 
 ```javascript
-let teamPromise = nhlApi.team(10, {
+let teamPromise = nhlApi.team(<id>, {
     expand: [
         'team.roster',
         'roster.person',
@@ -49,6 +49,15 @@ let schedulePromise = nhlApi.schedule({
         'seriesSummary.series'
     ]
 });
+
+let playerPromise = nhlApi.people(<id>, {
+    expand: [ 'person.stats'],
+    stats: 'yearByYear'
+});
+
+let conferencesPromise = nhlApi.conference();
+let divisionPromise = nhlApi.division();
+
 ```
 
 ## license

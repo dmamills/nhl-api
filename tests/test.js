@@ -71,10 +71,33 @@ describe('team api', () => {
 
     it('should accept expands as an array', cb => {
         nhlApi.team(10, {
-            expand: ['team.roster']
+            expand: ['team.roster'],
         }).then(toronto => {
             toronto.should.have.ownProperty('roster');
             cb();
         });
     });
+});
+
+describe('person api', _ => {
+
+    let playerPromise = nhlApi.people(8471392, {
+        expand: ['person.stats'],
+        stats: 'yearByYear'
+    });
+
+    it('should get a player', cb => {
+        playerPromise.then(player => {
+            player.fullName.should.equal('Roman Polak');
+            cb();
+        });
+    });
+
+    it('should expand stats for player', cb => {
+        playerPromise.then(player => {
+            player.should.have.ownProperty('stats');
+            cb();
+        });
+    });
+
 });
