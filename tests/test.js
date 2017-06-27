@@ -28,7 +28,7 @@ describe('request utilities', function() {
     it('should fetch all teams when not passed an id', cb => {
         requests.getResource('teams')().then(teams => {
             teams.should.be.Array();
-            teams.should.have.length(30);
+            teams.should.have.length(31);
             cb();
         });
     });
