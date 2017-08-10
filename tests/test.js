@@ -52,7 +52,7 @@ describe('team api', () => {
         });
     });
 
-    it('should retrieve a all teams', cb => {
+    it('should retrieve all teams', cb => {
         nhlApi.team().then(teams => {
             teams.should.be.Array();
             teams.length.should.be.above(1);
@@ -99,5 +99,27 @@ describe('person api', _ => {
             cb();
         });
     });
-
 });
+
+describe('standings api', _ => {
+    let standingsPromise = nhlApi.standings()
+    let divisionsPromise = nhlApi.division()
+
+    it('should get standings', cb => {
+        standingsPromise.then(standings => {
+            standings.should.have.ownProperty('records')
+            cb()
+        })
+    })
+
+    it('should have correct amount of divisions', cb => {
+        Promise.all([standingsPromise, divisionsPromise])
+            .then(results => {
+                let standings = results[0].records
+                let divisions = results[1]
+
+                standings.should.have.length(divisions.length)
+                cb()
+            })
+    })
+})
