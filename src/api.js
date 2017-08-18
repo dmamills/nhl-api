@@ -5,5 +5,6 @@ module.exports = {
     people: request.getResource('people'),
     schedule: request.getResource('schedule'),
     division: request.getResource('divisions'),
+    standings: request.getResource('standings'),
     conference: request.getResource('conferences')
 };
