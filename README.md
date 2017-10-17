@@ -15,7 +15,7 @@ nhlApi.team(10).then(team => {
 
 nhlApi.schedule({
     start_date: '2016-11-11',
-    end_date; '2016-11-12',
+    end_date: '2016-11-12',
     expand: [ 'schedule.linescore' ]
 }).then(schedule => {
     console.log(schedule) // { !!! }
