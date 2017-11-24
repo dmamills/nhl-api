@@ -1,6 +1,6 @@
 {
   "name": "nhl-api",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "get nhl stats, for fun!",
   "main": "index.js",
   "scripts": {
