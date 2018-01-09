@@ -2,7 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/dmamills/nhl-api.png)](http://travis-ci.org/dmamills/nhl-api)
 
-poorly made promise based node library for getting nhl stats. basically a wrapper around the ajax requests nhl.com makes.
+promise based node library for getting nhl stats. basically a wrapper around the ajax requests nhl.com makes.
 
 ## usage
 
